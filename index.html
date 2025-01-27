@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Form</title>
+    <title>Organization Selection Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 20px;
         }
@@ -18,8 +18,16 @@
             display: block;
             margin-bottom: 5px;
         }
-        input, select {
+        input[type="email"] {
             width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        select[multiple] {
+            width: 100%;
+            height: 200px;
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -46,10 +54,13 @@
             margin-top: 5px;
             display: none;
         }
+        #organizationsGroup {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <form id="subscriptionForm">
+    <form id="organizationForm">
         <div class="form-group">
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
@@ -57,21 +68,163 @@
         </div>
         
         <div class="form-group">
-            <label for="location">Location:</label>
-            <select id="location" name="location">
-                <option value="Canada,International" selected>All</option>
-                <option value="International">International</option>
-                <option value="Canada">Canada</option>
-            </select>
+            <label>
+                <input type="checkbox" id="selectOrganizations" name="selectOrganizations">
+                Select Organizations
+            </label>
+        </div>
+
+        <div class="form-group" id="organizationsGroup">
+            <label for="organizations">Organizations (hold Ctrl/Cmd to select multiple):</label>
+            <select id="organizations" name="organizations" multiple>
+                <option value="84">Alberta Congenital Anomalies Surveillance System (ACASS)</option>
+                <option value="85">Alpha-1 Canadian Registry</option>
+                <option value="1">Alpha-1 International Registry (AIR)</option>
+                <option value="2">APS ACTION (Antiphospholipid Syndrome Alliance for Clinical Trials and International Networking) International Clinical Database and Repository</option>
+                <option value="3">Autosomal Recessive Cerebellar Ataxia (ARCA) Global Registry</option>
+                <option value="4">Autosomal Recessive Spastic Ataxia of Charlevoix-Saguenay (ARSACS) International Patient Registry</option>
+                <option value="5">Barth Syndrome Registry and Repository (BRR)</option>
+                <option value="86">BC Glomerulonephritis (GN) Registry</option>
+                <option value="87">Brain Tumour Registry of Canada (BTRC)</option>
+                <option value="6">Brain Vascular Malformation Consortium (BVMC)</option>
+                <option value="88">CAN-Fever Autoinflammatory Disease Registry</option>
+                <option value="118">CAN-OPTICS: the Canadian Neuromyelitis Optica Spectrum Disorder and other atypical demyelinating diseases Cohort Study</option>
+                <option value="89">Canadian Acromegaly Registry</option>
+                <option value="90">Canadian Apheresis Group (CAG) Thrombotic thrombocytopenic purpura (TTP) Registry</option>
+                <option value="91">Canadian Atypical Teratoid Rhabdoid Tumors (ATRT) Registry</option>
+                <option value="92">Canadian Biliary Atresia Registry (CBAR)</option>
+                <option value="93">Canadian Bronchiectasis and Nontuberculous Mycobacteria (NTM) Database</option>
+                <option value="94">Canadian Cancer Registry (CCR)</option>
+                <option value="95">Canadian Cerebral Palsy Registry</option>
+                <option value="7">Canadian Cholangiocarcinoma Collaborative (C3) Registry</option>
+                <option value="96">Canadian Cystic Fibrosis Registry (CCFR)</option>
+                <option value="97">Canadian Fabry Disease Initiative (CFDI)</option>
+                <option value="98">Canadian Familial Hypercholesterolemia Registry</option>
+                <option value="100">Canadian Homozygous Familial Hypercholesterolemia (HoFH) Registry</option>
+                <option value="101">Canadian Inflammatory Myopathy Study (CIMS)</option>
+                <option value="102">Canadian Morphea Registry (C-MORE)</option>
+                <option value="103">Canadian Myelodysplastic syndromes (MDS-CAN)</option>
+                <option value="127">Canadian Myeloma Research Group Database (CMRG-DB)</option>
+                <option value="104">Canadian National Hypoparathyroidism Registry</option>
+                <option value="105">Canadian Network for Autoimmune Liver Disease (CaNAL)</option>
+                <option value="106">Canadian Neuromuscular Disease Registry (CNDR)</option>
+                <option value="107">Canadian Paroxysmal Nocturnal Hemoglobinuria (PNH) Registry</option>
+                <option value="108">Canadian Pediatric Neuroinflammatory Disorders Registry (CPND)</option>
+                <option value="109">Canadian Prospective Cohort Study to Understand Progression in MS (CanProCo)</option>
+                <option value="110">Canadian Pulmonary Hypertension Registry</option>
+                <option value="111">Canadian Registry for Amyloidosis Research (CRAR)</option>
+                <option value="112">Canadian Registry for Pulmonary Fibrosis (CARE-PF)</option>
+                <option value="113">Canadian Rett Syndrome Registry</option>
+                <option value="114">Canadian Sarcoma Research and Clinical Collaboration (CanSaRCC)</option>
+                <option value="115">Canadian Scleroderma Research Group (CSRG)</option>
+                <option value="116">Canadian Vasculitis Network (CanVasc) Registry</option>
+                <option value="117">Cancer in Young People in Canada (CYP-C)</option>
+                <option value="8">CDKL5 International Patient Registry</option>
+                <option value="9">Clinical Research Consortium for the Study of Cerebellar Ataxia (CRC-SCA)</option>
+                <option value="119">Clinical Von Hippel-Lindau disease (VHL) Database</option>
+                <option value="10">Consortium for Clinical Investigation of Neurologic Channelopathies (CINCH)</option>
+                <option value="11">CoRDS Ataxia Patient Registry</option>
+                <option value="12">Diamond Blackfan Anemia Registry (DBAR)</option>
+                <option value="120">Discovering the Periodic Fever Syndrome Population at Hamilton Health Sciences</option>
+                <option value="13">EBCare Patient Insights Network (PIN)</option>
+                <option value="15">Enroll-HD</option>
+                <option value="14">Eosinophilic gastrointestinal disease (EGID) Partners</option>
+                <option value="16">Fibrodysplasia Ossificans Progressiva (FOP) Registry</option>
+                <option value="121">Fighting Blindness Canada (FBC) Inherited Retinal Disease Patient Registry</option>
+                <option value="17">Frontotemporal Degeneration (FTD) Disorders Registry</option>
+                <option value="18">FungiScope</option>
+                <option value="19">Genetic Disorders of Mucociliary Clearance Consortium (GDMCC)</option>
+                <option value="20">Genetic of Intellectual Disability and Autism Spectrum Disorders (GENiDA)</option>
+                <option value="122">Genetic Studies of Chronic Kidney Disease</option>
+                <option value="123">Genodermatoses Registry</option>
+                <option value="21">Global Angelman Syndrome Registry (GASR)</option>
+                <option value="22">Global Dystonia Registry (GDR)</option>
+                <option value="23">Global Mucopolysaccharidosis type I (MPS 1) Registry</option>
+                <option value="24">Global Patient Registry for Smith-Kingsmore Syndrome (SKS)</option>
+                <option value="25">Global Prader-Willi Syndrome (PWS) Registry</option>
+                <option value="26">GNAO1 International Registry</option>
+                <option value="27">Hyperinsulinism International Global Registry (HIGR)</option>
+                <option value="48">Immune thrombocytoopenia (ITP) Natural History Study Registry</option>
+                <option value="28">International Diffuse intrinsic pontine glioma (DIPG)/diffuse midline glioma (DMG) Registry</option>
+                <option value="29">International Fabry Registry</option>
+                <option value="30">International Family Registry for Centronuclear and Myotubular Myopathies</option>
+                <option value="31">International Fanconi Anemia Registry (IFAR)</option>
+                <option value="32">International Fragile X Premutation Registry (IFXPR)</option>
+                <option value="33">International Gaucher Registry</option>
+                <option value="34">International GNE Myopathy Registry</option>
+                <option value="35">International Hereditary Thrombotic Thrombocytopenic Purpura (hTTP) Registry</option>
+                <option value="36">International Kawasaki Disease Registry (IKDR)</option>
+                <option value="37">International LGDA Registry for Complex Lymphatic Anomalies</option>
+                <option value="38">International Niemann-Pick Disease Registry (INPDR)</option>
+                <option value="39">International Pachyonychia Congenita Research Registry (IPCRR)</option>
+                <option value="41">International Paroxysmal Nocturnal Hemoglobinuria (PNH) Registry</option>
+                <option value="40">International Pediatric Acute-Onset Neuropsychiatric syndrome (PANS) Registry</option>
+                <option value="43">International Pompe Registry</option>
+                <option value="42">International Pyridoxine-dependent epilepsy (PDE) Registry</option>
+                <option value="44">International Registry For Pediatric Systemic Vasculitis (PedVas) Initiative</option>
+                <option value="45">International Registry of Acute Aortic Dissection (IRAD)</option>
+                <option value="46">International SCN8A Registry Research Study</option>
+                <option value="47">International Study Group of Pediatric Pancreatitis: In search for a cure: INSPPIRE</option>
+                <option value="124">KidCOM</option>
+                <option value="49">KIF1A Associated Neurologic Disorder (KAND) Natural History Study</option>
+                <option value="50">Leber hereditary optic neuropathy (LHON) Data Collection Program</option>
+                <option value="51">Life Raft Group Gastrointestinal stromal tumours (GIST) Patient Registry</option>
+                <option value="125">Mastocytosis Assessment and Treatment Evaluation Registry</option>
+                <option value="126">MitoCanada Patient Registry</option>
+                <option value="52">MitoSHARE</option>
+                <option value="53">Moebius Syndrome Foundation Contact Registry</option>
+                <option value="128">Myeloproliferative Neoplasms (MPNs) Patient Registry</option>
+                <option value="54">Myotubular and Centronuclear Myopathies Patient Registry (MTM and CNM Registry)</option>
+                <option value="129">National Hearts in Rhythm Organization (HiRO) Registry</option>
+                <option value="56">New-Onset Refractory Status Epilepticus (NORSE) Prospective Observational Study Registry</option>
+                <option value="57">New-Onset Refractory Status Epilepticus (NORSE)/Febrile Infection-Related Epilepsy Syndrome (FIRES) Family Registry</option>
+                <option value="58">North American Diamond Blackfan Anemia Registry (DBAR)</option>
+                <option value="59">North American Malignant Hyperthermia Registry (NAMHR)</option>
+                <option value="60">North American Mitochondrial Disease Consortium (NAMDC)</option>
+                <option value="130">Orphan Disease Center CDKL5 Deficiency Disorder International Patient Registry</option>
+                <option value="63">Paroxysmal nocturnal hemoglobinuria (PNH) Registry</option>
+                <option value="62">Pediatric Cardiomyopathy Registry (PCMR)</option>
+                <option value="131">Pediatric Neurofibromatosis Registry</option>
+                <option value="132">Pediatric Oncology Group of ON Networked Information System (POGONIS)</option>
+                <option value="61">Primary Ciliary Dyskinesia Foundation Registry (PCDFR)</option>
+                <option value="64">Primary Immune Deficiency Treatment Consortium (PIDTC)</option>
+                <option value="65">Primary sclerosing cholangitis (PSC) Partners Patient Registry</option>
+                <option value="133">Prospective Longitudinal Study to Assess Long-Term Safety of Treatments and the Epidemiology of Bleeding in Immune Thrombocytopenia</option>
+                <option value="134">Province of Ontario Neurodevelopmental Disorders (POND) Network OBI: POND Registry</option>
+                <option value="135">Quebec congenital heart disease registry</option>
+                <option value="136">Quebec Myotonic Dystrophy Registry/ Registre québécois sur la dystrophie myotonique de type 1 Q-DMR</option>
+                <option value="137">Quebec Trophoblastic Disease Network</option>
+                <option value="66">Rare Brain Tumor Consortium Global Registry</option>
+                <option value="75">Rare Diseases Clinical Research Network (RDCRN) Patient Contact Registry</option>
+                <option value="149">Rare Kidney Stone Consortium (RKSC) Primary Hyperoxaluria Registry</option>
+                <option value="67">RARE-X CHD2 - Data Collection Program</option>
+                <option value="138">Registry of Rare Diseases in Pregnancy (Groupe d'etude en medecine obstetricale du Québéc)</option>
+                <option value="139">SickKids Lupus Registry</option>
+                <option value="68">Simons Searchlight</option>
+                <option value="140">Southern Alberta Registry for Systemic Lupus Erythematosus (STARLET)</option>
+                <option value="141">STXBP1.CA</option>
+                <option value="142">The Canadian Alliance of Pediatric Rheumatology Investigators Juvenile Idiopathic (CAPRI) Registry</option>
+                <option value="143">The Canadian Bleeding Disorders Registry (CBDR)</option>
+                <option value="144">The Canadian Inherited Marrow Failure Registry (CIMFR)</option>
+                <option value="145">The Canadian Inherited Metabolic Diseases Network (CIMDRN)</option>
+                <option value="146">The Canadian Mucopolysaccharidosis (MPS) Registry</option>
+                <option value="69">The Duchenne Registry</option>
+                <option value="70">The International Registry and Natural History Study for Adaptor-Protein
         </div>
 
         <button type="submit">Submit</button>
-        <div id="successMessage" class="success">Success! Please check your email for the report!</div>
+        <div id="successMessage" class="success">Request successful! You will receive your emailed report shortly</div>
         <div id="errorMessage" class="error">An error occurred. Please try again.</div>
     </form>
 
     <script>
-        document.getElementById('subscriptionForm').addEventListener('submit', async function(e) {
+        // Toggle organizations select visibility
+        document.getElementById('selectOrganizations').addEventListener('change', function(e) {
+            document.getElementById('organizationsGroup').style.display = 
+                e.target.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('organizationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Reset messages
@@ -81,7 +234,11 @@
             
             // Get form values
             const email = document.getElementById('email').value;
-            const location = document.getElementById('location').value;
+            const isOrgSelection = document.getElementById('selectOrganizations').value;
+            const organizationsSelect = document.getElementById('organizations');
+            const selectedOrganizations = Array.from(organizationsSelect.selectedOptions)
+                .map(option => option.value)
+                .join(',');
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,21 +248,22 @@
             }
             
             try {
-                let url='https://prod-24.canadacentral.logic.azure.com:443/workflows/3060f81275d24839adbf5770c95c8771/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=elWj1FbaexyCJb3CbYwG_yyLI1Z-4mkpG3LOCYwOuu4';
-                const response = await fetch(url, {
+                const response = await fetch('https://prod-24.canadacentral.logic.azure.com:443/workflows/3060f81275d24839adbf5770c95c8771/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=elWj1FbaexyCJb3CbYwG_yyLI1Z-4mkpG3LOCYwOuu4', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         email: email,
-                        location: location
+                        isOrgSelection:isOrgSelection,
+                        selectedOrganizations: selectedOrganizations
                     })
                 });
                 
                 if (response.ok) {
                     document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('subscriptionForm').reset();
+                    document.getElementById('organizationForm').reset();
+                    document.getElementById('organizationsGroup').style.display = 'none';
                 } else {
                     throw new Error('Network response was not ok');
                 }
