@@ -64,18 +64,55 @@
             padding: 15px;
             border-radius: 4px;
         }
+        .header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-title {
+            color: #2c3e50;
+            font-family: Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Optional decorative underline */
+        .header-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #3498db;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title">Download Rare Disease Registry Data</h1>
+        </div>
+    </header>
     <form id="organizationForm">
+        <div class="info-message">
+            This request will provide data on all registries. If you would like only specific registries, click on the "Select Specific Organizations" and choose the registries you would like.
+        </div>
         <div class="form-group">
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
             <div id="emailError" class="error">Please enter a valid email address</div>
         </div>
-        <div class="info-message">
-            This request will provide data on all registries. If you would like only specific registries, click on the "Select Specific Organizations" and choose the registries you would like.
-        </div>
+       
         
         <div class="form-group">
             <label>
